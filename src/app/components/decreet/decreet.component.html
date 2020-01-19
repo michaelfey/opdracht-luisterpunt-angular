@@ -1,0 +1,8 @@
+<table width="100%">
+  <tr>
+    <th *ngFor="let header of headers">{{header}}</th>
+  </tr>
+  <tr *ngFor="let data of dataResult">
+    <td *ngFor="let header of headers">{{data[header].value}}</td>
+  </tr>
+</table>
