@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {DecreetService} from "../../services/decreet.service";
+import {Component, OnInit} from '@angular/core';
+import {DecreetService} from '../../services/decreet.service';
 
 @Component({
   selector: 'decreet',
@@ -11,14 +11,19 @@ export class DecreetComponent implements OnInit {
   headers: string[] = [];
   dataResult: any[] = [];
 
-  constructor(private decreetService: DecreetService) { }
+  constructor(private decreetService: DecreetService) {
+  }
 
   ngOnInit() {
     this.decreetService.getLastFiveDecreten().subscribe((result) => {
-      //console.log(result);
       this.headers = result.head.vars;
       this.dataResult = result.results.bindings;
     });
+  }
+
+  unescapeString(str: string) {
+    console.log(decodeURI(str));
+    return decodeURI(str);
   }
 
 }
